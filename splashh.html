@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Splash Screen</title>
+  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="refresh" content="3;url=website1.html"> 
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw; /* Add this to ensure full width */
+      background-color:  rgb(202, 217, 225);;
+      background-size:cover; /* Cover the entire screen */
+      background-position: center center; /* Center from both X and Y */
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    
+    
+    .logo {
+      text-align: center;
+    }
+
+    .logo img {
+      width: 200px; /* Adjust logo size */
+      height: auto;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+    <img src="logo.png" alt="Website Logo">
+  </div>
+</body>
+</html>

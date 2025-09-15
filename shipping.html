@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Information - THE STYLE SEED</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        .shipping-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .shipping-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .shipping-details {
+            margin-bottom: 30px;
+        }
+
+        .shipping-details h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .shipping-details p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .shipping-table th, .shipping-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .shipping-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .shipping-table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .return-policy {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        .return-policy h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .return-policy p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+       .return-policy ul{
+           margin-left: 20px;
+           margin-bottom: 10px;
+
+       }
+        @media (max-width: 768px) {
+            .shipping-container {
+                padding: 20px;
+            }
+            .shipping-table th, .shipping-table td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .shipping-details h3,
+            .return-policy h3{
+                font-size: 18px;
+            }
+            .shipping-details p,
+            .return-policy p{
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="">
+        </a>
+        <ul class="nav-links">
+            <li><a href="website1.html">HOME</a></li>   
+            <li><a href="mens1.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="LOGIN.HTML">PROFILE</a></li>
+            <li><a href="cart.html">
+              <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+          </a></li>
+        </ul>
+      </nav>
+    <div class="shipping-container">
+        <h2>Shipping Information</h2>
+
+        <div class="shipping-details">
+            <h3>Shipping Policy</h3>
+            <p>At The Style Seed, we are committed to delivering your orders in a timely and efficient manner.  We partner with reputable courier services to ensure your purchases arrive safely.  Please review the following information regarding our shipping policies.</p>
+            <p>Order processing times may vary.  Typically, orders are processed within 1-2 business days.  You will receive a confirmation email with tracking information once your order has been shipped.</p>
+        </div>
+
+        <div class="shipping-details">
+            <h3>Shipping Costs and Delivery Times</h3>
+            <p>Shipping costs and delivery times are calculated based on the following factors:</p>
+            <ul>
+                <li>Destination Address</li>
+                <li>Shipping Method Selected</li>
+                <li>Order Weight and Dimensions</li>
+            </ul>
+
+            <table class="shipping-table">
+                <thead>
+                    <tr>
+                        <th>Shipping Method</th>
+                        <th>Delivery Time (Business Days)</th>
+                        <th>Shipping Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard Shipping</td>
+                        <td>5-7</td>
+                        <td>Rs. 50</td>
+                    </tr>
+                    <tr>
+                        <td>Express Shipping</td>
+                        <td>2-3</td>
+                        <td>Rs. 150</td>
+                    </tr>
+                    <tr>
+                        <td>Free Shipping</td>
+                        <td>5-7</td>
+                        <td>Rs. 0 (Orders above Rs. 2000)</td>
+                    </tr>
+                     <tr>
+                        <td>Local Pickup (Ludhiana)</td>
+                        <td>1-2</td>
+                        <td>Free</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><i>Please note that delivery times are estimates and may vary due to unforeseen circumstances such as weather delays or carrier issues.</i></p>
+        </div>
+
+        <div class="return-policy">
+            <h3>Returns and Exchanges</h3>
+            <p>We want you to be completely satisfied with your purchase. If you are not satisfied with your order, you may return or exchange it within 14 days of receiving your order, provided that the items are in their original condition (unworn, unwashed, and with tags attached).</p>
+
+            <p>Please note the following:</p>
+            <ul>
+                <li>Returns and exchanges are subject to product inspection.</li>
+                <li>For exchanges, customers are responsible for any price difference between the original item and the new item, as well as any additional shipping costs.</li>
+                <li>Refunds will be issued to the original payment method.</li>
+                 <li>Items purchased during sale are not eligible for return.</li>
+            </ul>
+
+            <p>For more information on how to initiate a return or exchange, please visit our <a href="#">returns</a> page.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom" style="margin-top: 50px; padding: 20px 0; background-color: #f9f9f9; text-align: center; color: #666; font-size: 14px;">
+            <hr style="border-top: 1px solid #eee; margin: 20px auto; width: 80%;">
+            <p>&copy; 2025 www.TheStyleSeed.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Super Sale</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.xyz {
+    height: 100vh;
+    background: linear-gradient(to right, #fdfbfb, #ebedee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-form {
+    flex: 1;
+    padding: 60px 40px;
+    animation: slideIn 1s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: rgb(202, 217, 225);
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #1aaa8c;
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1aaa8c, #1fc0a0);
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #188e7a, #1aaa8c);
+    transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.offer-image {
+    flex: 1;
+    background-image: url('https://i.pinimg.com/736x/a7/c4/44/a7c444aed50bcb1febb3ef0017bab061.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.offer-text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 70%;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.create-account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.create-account a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.create-account a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .offer-image {
+        height: 200px;
+    }
+
+    .offer-text {
+        font-size: 16px;
+        bottom: 10px;
+        left: 10px;
+        padding: 15px;
+    }
+
+    .login-form {
+        padding: 40px 20px;
+    }
+}
+
+/* Styles for the Create Account section */
+.create-account-form {
+    display: none; /* Hidden by default */
+    padding: 40px 20px;
+    animation: slideIn 1s ease;
+}
+
+.create-account-form h2 {
+    margin-bottom: 20px;
+    color: rgb(202, 217, 225);
+    font-size: 28px;
+    text-align: center;
+}
+
+.create-account-form .form-group {
+    margin-bottom: 20px;
+}
+
+.create-account-form .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.create-account-form .form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.create-account-form .form-group input:focus {
+    border-color: #1aaa8c;
+    outline: none;
+}
+
+.create-account-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #007bff, #63a4ff);
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-account-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #63a4ff);
+    transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-to-login a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.back-to-login a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="">
+        </a>
+        <ul class="nav-links">
+            <li><a href="website1.html">HOME</a></li>   
+            <li><a href="mens1.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="LOGIN.HTML">PROFILE</a></li>
+            <li><a href="cart.html">
+              <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+          </a></li>
+        </ul>
+      </nav>
+<div class="xyz">
+    <div class="container">
+        <div class="login-form" id="loginForm">
+            <h2>Login to Your Account</h2>
+            <form id="loginSubmitForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username or Email</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username or email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button class="login-btn" type="submit">Login</button>
+            </form>
+            <div class="create-account">
+                <a href="#" id="showCreateAccount">Create Account</a>
+            </div>
+            <div id="loginErrorMessage" class="error-message"></div>
+        </div>
+
+        <div class="login-form create-account-form" id="createAccountForm">
+            <h2>Create Your Account</h2>
+            <form id="createAccountSubmitForm">
+                <div class="form-group">
+                    <label for="createUsername">Username</label>
+                    <input type="text" id="createUsername" placeholder="Choose a username" required>
+                    <div id="createUsernameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="createEmail">Email</label>
+                    <input type="email" id="createEmail" placeholder="Enter your email" required>
+                    <div id="createEmailError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="createPassword">Password</label>
+                    <input type="password" id="createPassword" placeholder="Choose a strong password" required>
+                </div>
+                <button class="create-account-btn" type="submit">Create Account</button>
+            </form>
+            <div class="back-to-login">
+                <a href="#" id="showLoginForm">Back to Login</a>
+            </div>
+            <div id="createAccountSuccessMessage" style="color: green; margin-top: 10px; text-align: center; display: none;">Account created successfully! You are now logged in.</div>
+            <div id="createAccountErrorMessage" class="error-message" style="text-align: center;"></div>
+        </div>
+
+        <div class="offer-image">
+            <div class="offer-text">
+                <strong>Super Sale!</strong><br>
+                Grab up to <strong>70% OFF</strong> on all clothing categories. Don’t miss out!
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const createAccountForm = document.getElementById('createAccountForm');
+    const showCreateAccount = document.getElementById('showCreateAccount');
+    const showLoginForm = document.getElementById('showLoginForm');
+    const createAccountSubmitForm = document.getElementById('createAccountSubmitForm');
+    const loginSubmitForm = document.getElementById('loginSubmitForm');
+    const createUsernameInput = document.getElementById('createUsername');
+    const createEmailInput = document.getElementById('createEmail');
+    const createPasswordInput = document.getElementById('createPassword');
+    const loginUsernameInput = document.getElementById('loginUsername');
+    const loginPasswordInput = document.getElementById('loginPassword');
+    const createAccountSuccessMessage = document.getElementById('createAccountSuccessMessage');
+    const createAccountErrorMessage = document.getElementById('createAccountErrorMessage');
+    const loginErrorMessage = document.getElementById('loginErrorMessage');
+    const createUsernameError = document.getElementById('createUsernameError');
+    const createEmailError = document.getElementById('createEmailError');
+
+    // Simulate storing user data (replace with actual server-side storage)
+    const users = {};
+    let loggedInUser = null;
+
+    // Function to check if a username or email already exists
+    function isUserExists(username, email) {
+        return users[username] !== undefined || Object.values(users).some(user => user.email === email);
+    }
+
+    // Function to handle account creation
+    createAccountSubmitForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = createUsernameInput.value.trim();
+        const email = createEmailInput.value.trim();
+        const password = createPasswordInput.value;
+
+        createUsernameError.textContent = '';
+        createEmailError.textContent = '';
+        createAccountErrorMessage.textContent = '';
+
+        if (isUserExists(username, email)) {
+            if (users[username] !== undefined) {
+                createUsernameError.textContent = 'Username already exists.';
+            }
+            if (Object.values(users).some(user => user.email === email)) {
+                createEmailError.textContent = 'Email already exists.';
+            }
+            return;
+        }
+
+        if (username && email && password) {
+            users[username] = { email, password };
+            loggedInUser = username;
+            console.log('Account created:', users[username]);
+            createAccountSuccessMessage.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'website1.html'; // Redirect to home page
+            }, 1500);
+        } else {
+            createAccountErrorMessage.textContent = 'Please fill in all fields.';
+        }
+    });
+
+    // Function to handle login
+    loginSubmitForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const usernameOrEmail = loginUsernameInput.value.trim();
+        const password = loginPasswordInput.value;
+        loginErrorMessage.textContent = '';
+
+        let user = users[usernameOrEmail];
+        if (!user) {
+            user = Object.values(users).find(u => u.email === usernameOrEmail);
+        }
+
+        if (user && user.password === password) {
+            loggedInUser = Object.keys(users).find(key => users[key] === user);
+            alert('Successfully logged in!');
+            window.location.href = 'website1.html'; // Redirect to home page
+        } else {
+            loginErrorMessage.textContent = 'Invalid username or password.';
+        }
+    });
+
+    showCreateAccount.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        createAccountForm.style.display = 'block';
+        createAccountSuccessMessage.style.display = 'none';
+        createAccountErrorMessage.textContent = '';
+        createUsernameError.textContent = '';
+        createEmailError.textContent = '';
+    });
+
+    showLoginForm.addEventListener('click', (e) => {
+        e.preventDefault();
+        createAccountForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        loginErrorMessage.textContent = '';
+        createAccountSuccessMessage.style.display = 'none';
+        createAccountErrorMessage.textContent = '';
+        createUsernameError.textContent = '';
+        createEmailError.textContent = '';
+    });
+
+    // Check if a user is already logged in on page load (for demonstration)
+    if (loggedInUser) {
+        alert('Already logged in as ' + loggedInUser + '!');
+        window.location.href = 'website1.html'; // Redirect to home page
+    }
+</script>
+
+</body>
+</html>

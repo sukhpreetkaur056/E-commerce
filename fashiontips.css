@@ -1,0 +1,60 @@
+ .xyz {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 960px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tip-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px; /* Space between text and image */
+            align-items: center; /* Vertically align text and image */
+        }
+
+        .tip-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .tip-text {
+            flex-grow: 1; /* Allow text to take up available space */
+        }
+
+        .tip-heading {
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .tip-content {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .tip-image {
+            width: 200px; /* Adjust image width as needed */
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }

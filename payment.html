@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Timeluxe</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+               *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #efefef, #4ca1af;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #efefef, #4ca1af);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(36, 36, 36, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+.fas-fa-user-fa-2x{
+    background:white ;
+}
+
+.gender-dropdown {
+  position: relative;
+}
+
+.gender-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(135deg, #efefef, #4ca1af);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 150px;
+  z-index: 100;
+}
+
+.gender-menu a {
+  color: #2c3e50;
+  padding: 8px 20px;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gender-menu a:hover {
+  background-color: #f0f0f0;
+  padding-left: 25px;
+}
+
+.gender-dropdown:hover .gender-menu {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.search-container {
+  position: relative;
+  width: 250px;
+}
+
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.icon {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.icon-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+ /* Icons */
+ .nav-icons .icon {
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  margin-left: 20px;
+  transition: transform 0.2s ease, color 0.3s;
+}
+
+.nav-icons .icon:hover {
+  transform: scale(1.2);
+  color: #f9c745;
+}
+ /* Responsive Coming Soon */
+ @media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+a{
+            color: #ffffff;
+            text-decoration: none;
+        }
+        body { background: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+        .payment-container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 28px; }
+        .step-title { font-size: 1.1rem; color: #888; margin-bottom: 10px; }
+        .main-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 18px; }
+        .amount-section { background: #f7faff; border-radius: 8px; padding: 16px 18px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .amount-label { color: #555; font-weight: 500; }
+        .amount-value { color: #2d8f5a; font-size: 1.3rem; font-weight: 700; }
+        .discount-section { background: #e8fbe8; color: #1a7f37; border-radius: 6px; padding: 10px 14px; margin-bottom: 18px; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .pay-options { margin-bottom: 18px; }
+        .pay-group { margin-bottom: 18px; }
+        .pay-group-title { font-weight: 600; margin-bottom: 8px; font-size: 1.08rem; }
+        .pay-option { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+        .pay-option:last-child { border-bottom: none; }
+        .pay-radio { accent-color: #2d8f5a; width: 18px; height: 18px; }
+        .pay-label { flex: 1; font-size: 1.05rem; }
+        .pay-btn { width: 100%; background: #f9c745; color: #222; border: none; border-radius: 6px; padding: 16px 0; font-size: 1.18rem; font-weight: 700; cursor: pointer; margin-top: 18px; transition: background 0.2s; }
+        .pay-btn:hover { background: #ffe082; }
+        .unavailable { color: #bbb; cursor: not-allowed; }
+        .secure-badge { color: #2d8f5a; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .footer { text-align: center; color: #aaa; margin-top: 32px; font-size: 1rem; }
+    </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">
+        <img src="logo.png" alt="">
+    </a>
+    <ul class="nav-links">
+        <li><a href="website1.html">HOME</a></li>   
+        <li><a href="mens1.html">MEN</a></li>
+        <li><a href="women.html">WOMEN</a></li>
+        <li><a href="kids.html">KIDS</a></li>
+        <li><a href="aboutus.html">ABOUT US</a></li>
+        <li><a href="LOGIN.HTML">PROFILE</a></li>
+        <li><a href="cart.html">
+          <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+      </a></li>
+    </ul>
+  </nav>
+    <div class="payment-container">
+        <div class="main-title">Payments</div>
+        <div class="secure-badge"><i class="fas fa-lock"></i> 100% Secure</div>
+        <div class="amount-section">
+            <span class="amount-label">Total Amount</span>
+            <span class="amount-value" id="totalAmount">₹0</span>
+        </div>
+        <div class="discount-section">
+            <i class="fas fa-tag"></i> 10% instant discount &nbsp; <span style="font-weight:400;">Claim now with payment offers</span>
+        </div>
+        <div class="offers-section" style="background:#f7fbe8;color:#1a7f37;border-radius:6px;padding:10px 14px;margin-bottom:18px;font-size:1rem;">
+            <b>Available Offers:</b>
+            <ul style="margin:8px 0 0 18px;padding:0;">
+                <li>10% off on HDFC Bank Cards</li>
+                <li>5% Cashback on Paytm UPI</li>
+                <li>Flat ₹500 off on orders above ₹30,000</li>
+            </ul>
+        </div>
+        <form id="paymentForm">
+            <div class="pay-options">
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="fab fa-cc-amazon-pay"></i> UPI</div>
+                    <div class="pay-option"><input type="radio" name="paymode" class="pay-radio" value="Paytm" checked><span class="pay-label">Paytm</span></div>
+                    <div class="pay-option"><input type="radio" name="paymode" class="pay-radio" value="Google Pay"><span class="pay-label">Google Pay</span></div>
+                    <div class="pay-option"><input type="radio" name="paymode" class="pay-radio" value="PhonePe"><span class="pay-label">PhonePe</span></div>
+                    <div class="pay-option"><input type="radio" name="paymode" class="pay-radio" value="BHIM UPI"><span class="pay-label">BHIM UPI</span></div>
+                    <div class="pay-option"><input type="radio" name="paymode" class="pay-radio" value="Add new UPI ID"><span class="pay-label">Add new UPI ID</span></div>
+                </div>
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="far fa-credit-card"></i> Credit / Debit / ATM Card</div>
+                    <div class="pay-option"><span class="pay-label">Add and secure cards as per RBI guidelines <span style="color:#1a7f37;font-size:0.98rem;">Save upto ₹1,500 • 211 offers available</span></span></div>
+                </div>
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="fas fa-percent"></i> EMI</div>
+                    <div class="pay-option"><span class="pay-label">Get Debit and Cardless EMIs on HDFC Bank</span></div>
+                </div>
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="fas fa-university"></i> Net Banking</div>
+                    <div class="pay-option"><span class="pay-label">All major banks supported</span></div>
+                </div>
+               
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="fas fa-rupee-sign"></i> Cash on Delivery</div>
+                    <div class="pay-option">
+                        <input type="radio" name="paymode" class="pay-radio" value="Cash on Delivery">
+                        <span class="pay-label">Cash on Delivery</span>
+                    </div>
+                </div>
+                <div class="pay-group">
+                    <div class="pay-group-title"><i class="fas fa-wallet"></i> Wallet</div>
+                    <div class="pay-option unavailable"><span class="pay-label">Unavailable</span></div>
+                </div>
+            </div>
+            <a href="orderplaced.html"></a>
+            <button type="submit" class="pay-btn" id="payBtn">Pay ₹0</button>
+        </form>
+        <div class="footer">35 Crore happy customers and counting! <span style="font-size:1.2em;">😊</span></div>
+    </div>
+    <script>
+        // Get total from localStorage (set in order-summary.html)
+        let total = 0;
+        if(localStorage.getItem('orderTotal')) {
+            total = parseInt(localStorage.getItem('orderTotal'));
+        } else if(localStorage.getItem('buynowProduct')) {
+            // fallback: calculate from product if needed
+            const product = JSON.parse(localStorage.getItem('buynowProduct'));
+            if(product) {
+                let price = product.price;
+                let discount = Math.floor(price * 0.11);
+                total = price - discount + 69;
+            }
+        }
+        document.getElementById('totalAmount').innerText = `₹${total.toLocaleString()}`;
+        document.getElementById('payBtn').innerText = `Pay ₹${total.toLocaleString()}`;
+
+        // On payment submit
+        document.getElementById('paymentForm').onsubmit = function(e) {
+            e.preventDefault();
+            const paymode = document.querySelector('input[name="paymode"]:checked').value;
+
+            // Save order details to localStorage
+            localStorage.setItem('orderPayment', paymode);
+
+            // Redirect to order placed page
+            window.location.href = 'orderplaced.html';
+        };
+
+        document.getElementById('continueBtn').onclick = function() {
+            // Get buyer details from the page
+            const name = document.getElementById('addressName').innerText;
+            const address = document.getElementById('addressFull').innerText;
+            const phone = document.getElementById('addressPhone').innerText;
+
+            // Save to localStorage
+            localStorage.setItem('orderName', name);
+            localStorage.setItem('orderAddress', address);
+            localStorage.setItem('orderPhone', phone);
+
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        };
+    </script>
+</body>
+</html>

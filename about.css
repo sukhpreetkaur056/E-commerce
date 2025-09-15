@@ -1,0 +1,59 @@
+.xyz {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fafafa;
+        width: 100%;
+      }
+      
+      .footer {
+        background-color: #f9f9f9;
+        padding: 40px 5%;
+        color: #222;
+      }
+      
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+      }
+      
+      .footer-column {
+        flex: 1 1 220px;
+      }
+      .footer-column ul li a {
+        color:rgb(139, 174, 192); /* Initial link color (blue) */
+        text-decoration: none; /* Remove default underline */
+        transition: color 0.3s ease, border-bottom 0.3s ease; /* Smooth transition for hover effects */
+        padding-bottom: 2px; /* Add a little padding for the hover underline */
+      }
+  
+      .footer-column ul li a:hover {
+        color: #0056b3; /* Darker blue on hover */
+        border-bottom: 2px solid #0056b3; /* Add an underline on hover */
+      }
+  
+      .footer-column h3,
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .footer-column ul li {
+        font-size: 14px;
+        margin-bottom: 8px;
+        color: #444;
+        cursor: pointer;
+      }
+      .footer-bottom {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 40px;
+        color: #666;
+      }

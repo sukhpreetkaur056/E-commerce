@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylecasual11.css">
+    <style>
+        *{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background-color: #efefef, #4ca1af;
+}
+
+.navbar {
+background: linear-gradient(135deg, #efefef, #4ca1af);
+color: rgb(255, 255, 255);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 5%;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+border-radius: 0 0 20px 20px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+position: relative;
+z-index: 1000;
+}
+
+
+
+.logo {
+font-size: 24px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 2px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.logo:hover {
+transform: scale(1.05);
+text-shadow: 0 0 10px rgba(36, 36, 36, 0.5);
+}
+
+.nav-links {
+display: flex;
+gap: 30px;
+}
+
+.nav-item {
+position: relative;
+cursor: pointer;
+padding: 5px 0;
+font-weight: 500;
+transition: all 0.3s ease;
+}
+
+.nav-item::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background-color: white;
+transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+width: 100%;
+}
+.fas-fa-user-fa-2x{
+background:white ;
+}
+
+.gender-dropdown {
+position: relative;
+}
+
+.gender-menu {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+background: linear-gradient(135deg, #efefef, #4ca1af);
+border-radius: 5px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+padding: 10px 0;
+min-width: 150px;
+z-index: 100;
+}
+
+.gender-menu a {
+color: #2c3e50;
+padding: 8px 20px;
+display: block;
+text-decoration: none;
+transition: all 0.2s ease;
+}
+
+.gender-menu a:hover {
+background-color: #f0f0f0;
+padding-left: 25px;
+}
+
+.gender-dropdown:hover .gender-menu {
+display: block;
+animation: fadeIn 0.3s ease;
+}
+
+.search-container {
+position: relative;
+width: 250px;
+}
+
+
+.search-input {
+width: 100%;
+padding: 10px 15px;
+border-radius: 25px;
+border: none;
+outline: none;
+background-color: rgba(255, 255, 255, 0.2);
+color: white;
+transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+background-color: rgba(255, 255, 255, 0.3);
+box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.search-btn {
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+background: none;
+border: none;
+color: white;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+transform: translateY(-50%) scale(1.2);
+}
+
+.nav-icons {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+.icon {
+font-size: 20px;
+cursor: pointer;
+position: relative;
+transition: all 0.3s ease;
+}
+
+.icon:hover {
+transform: scale(1.2);
+}
+
+.icon-badge {
+position: absolute;
+top: -8px;
+right: -8px;
+color: white;
+border-radius: 50%;
+width: 18px;
+height: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 10px;
+font-weight: bold;
+}
+
+/* Icons */
+.nav-icons .icon {
+color: rgb(255, 255, 255);
+font-size: 1.2rem;
+margin-left: 20px;
+transition: transform 0.2s ease, color 0.3s;
+}
+
+.nav-icons .icon:hover {
+transform: scale(1.2);
+color: #f9c745;
+}
+/* Responsive Coming Soon */
+@media (max-width: 768px) {
+.nav-links {
+display: none;
+}
+}
+a{
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* Order Confirmation Styles */
+    .confirmation-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 28px;
+    }
+
+    .confirmation-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .confirmation-icon {
+        color: #2d8f5a;
+        font-size: 60px;
+        margin-bottom: 15px;
+    }
+
+    .confirmation-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #2d8f5a;
+    }
+
+    .confirmation-subtitle {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .order-id {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .details-card {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .details-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .detail-row {
+        display: flex;
+        margin-bottom: 12px;
+    }
+
+    .detail-label {
+        font-weight: 500;
+        color: #666;
+        width: 120px;
+    }
+
+    .detail-value {
+        color: #333;
+        flex: 1;
+    }
+
+    .product-item {
+        display: flex;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .product-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 15px;
+    }
+
+    .product-info {
+        flex: 1;
+    }
+
+    .product-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .product-price {
+        color: #2d8f5a;
+        font-weight: 600;
+    }
+
+    .tracking-section {
+        margin-top: 40px;
+        background: #f7faff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .tracking-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .tracking-steps {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin: 30px 0;
+    }
+
+    .tracking-steps::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #ddd;
+        z-index: 1;
+    }
+
+    .tracking-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .step-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #2d8f5a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .step-icon.pending {
+        background: #ddd;
+        color: #888;
+    }
+
+    .step-label {
+        font-size: 0.9rem;
+        color: #2d8f5a;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .step-label.pending {
+        color: #888;
+    }
+
+    .continue-shopping {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        padding: 12px 0;
+        background: #f9c745;
+        color: #222;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+
+    .continue-shopping:hover {
+        background: #ffe082;
+    }
+
+    @media (max-width: 768px) {
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .tracking-steps {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .tracking-steps::before {
+            display: none;
+        }
+        
+        .tracking-step {
+            flex-direction: row;
+            gap: 10px;
+        }
+    }
+</style>
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="">
+        </a>
+        <ul class="nav-links">
+            <li><a href="website1.html">HOME</a></li>   
+            <li><a href="mens1.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="LOGIN.HTML">PROFILE</a></li>
+            <li><a href="cart.html">
+              <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+          </a></li>
+        </ul>
+      </nav>
+
+    <div class="confirmation-container">
+        <div class="confirmation-header">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+            <p class="confirmation-subtitle">Your order <span class="order-id" id="orderId"></span> has been placed successfully.</p>
+            <p>We've sent a confirmation email with all the details.</p>
+        </div>
+
+        <div class="details-grid">
+            <div class="details-card">
+                <h2 class="details-title">Order Details</h2>
+                <div class="detail-row">
+                    <span class="detail-label">Order ID:</span>
+                    <span class="detail-value" id="orderIdValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Order Date:</span>
+                    <span class="detail-value" id="orderDate"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Items:</span>
+                    <span class="detail-value" id="orderItemsCount"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value" id="orderTotal"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Delivery Charge:</span>
+                    <span class="detail-value">₹69</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Discount Applied:</span>
+                    <span class="detail-value" id="orderDiscount"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Final Amount:</span>
+                    <span class="detail-value" id="orderFinalAmount"></span>
+                </div>
+            </div>
+
+            <div class="details-card">
+                <h2 class="details-title">Payment Information</h2>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Method:</span>
+                    <span class="detail-value" id="paymentMethod"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Status:</span>
+                    <span class="detail-value">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Transaction ID:</span>
+                    <span class="detail-value" id="transactionId"></span>
+                </div>
+            </div>
+
+            <div class="details-card">
+                <h2 class="details-title">Delivery Address</h2>
+                <div class="detail-row">
+                    <span class="detail-label">Name:</span>
+                    <span class="detail-value" id="deliveryName"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value" id="deliveryPhone"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Address:</span>
+                    <span class="detail-value" id="deliveryAddress"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Expected Delivery:</span>
+                    <span class="detail-value" id="expectedDelivery"></span>
+                </div>
+            </div>
+
+            <div class="details-card">
+                <h2 class="details-title">Ordered Items</h2>
+                <div id="orderedItems">
+                    <!-- Items will be added dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div class="tracking-section">
+            <h2 class="tracking-title">Track Your Order</h2>
+            <div class="tracking-steps">
+                <div class="tracking-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span class="step-label">Order Placed</span>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon pending">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <span class="step-label pending">Packed</span>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon pending">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <span class="step-label pending">Shipped</span>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon pending">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="step-label pending">Delivered</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="website1.html" class="continue-shopping">Continue Shopping</a>
+    </div>
+    <script>
+        // Generate random order ID
+        function generateOrderId() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            let id = 'TLX';
+            
+            for (let i = 0; i < 3; i++) {
+                id += letters.charAt(Math.floor(Math.random() * letters.length));
+            }
+            
+            for (let i = 0; i < 6; i++) {
+                id += numbers.charAt(Math.floor(Math.random() * numbers.length));
+            }
+            
+            return id;
+        }
+
+        // Generate random transaction ID
+        function generateTransactionId() {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let id = '';
+            
+            for (let i = 0; i < 12; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            return id;
+        }
+
+        // Format date
+        function formatDate(date) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-IN', options);
+        }
+
+        // Calculate expected delivery date (3-5 days from now)
+        function getExpectedDelivery() {
+            const date = new Date();
+            const daysToAdd = 3 + Math.floor(Math.random() * 3); // 3-5 days
+            date.setDate(date.getDate() + daysToAdd);
+            
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-IN', options);
+        }
+
+        // Display order details
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate order details
+            const orderId = generateOrderId();
+            const transactionId = generateTransactionId();
+            const orderDate = new Date();
+            const expectedDelivery = getExpectedDelivery();
+            
+            // Get data from localStorage
+            let total = 0;
+            let discount = 0;
+            let itemsCount = 0;
+            let product = null;
+            
+            if(localStorage.getItem('orderTotal')) {
+                total = parseInt(localStorage.getItem('orderTotal'));
+                discount = Math.floor(total * 0.11);
+                itemsCount = localStorage.getItem('cartCount') || 1;
+            } else if(localStorage.getItem('buynowProduct')) {
+                product = JSON.parse(localStorage.getItem('buynowProduct'));
+                if(product) {
+                    let price = product.price;
+                    discount = Math.floor(price * 0.11);
+                    total = price - discount + 69;
+                    itemsCount = 1;
+                }
+            }
+            
+            const paymentMethod = localStorage.getItem('orderPayment') || 'UPI (Paytm)';
+            const name = localStorage.getItem('orderName') || 'John Doe';
+            const address = localStorage.getItem('orderAddress') || '123 Main St, Bangalore, Karnataka 560001';
+            const phone = localStorage.getItem('orderPhone') || '+91 9876543210';
+            
+            // Display the data
+            document.getElementById('orderId').textContent = orderId;
+            document.getElementById('orderIdValue').textContent = orderId;
+            document.getElementById('orderDate').textContent = formatDate(orderDate);
+            document.getElementById('orderItemsCount').textContent = itemsCount;
+            document.getElementById('orderTotal').textContent = `₹${(total + discount).toLocaleString()}`;
+            document.getElementById('orderDiscount').textContent = `-₹${discount.toLocaleString()}`;
+            document.getElementById('orderFinalAmount').textContent = `₹${total.toLocaleString()}`;
+            document.getElementById('paymentMethod').textContent = paymentMethod;
+            document.getElementById('transactionId').textContent = transactionId;
+            document.getElementById('deliveryName').textContent = name;
+            document.getElementById('deliveryPhone').textContent = phone;
+            document.getElementById('deliveryAddress').textContent = address;
+            document.getElementById('expectedDelivery').textContent = expectedDelivery;
+            
+            // Display ordered items
+            const orderedItemsContainer = document.getElementById('orderedItems');
+            
+            if(product) {
+                // For buy now product
+                const itemHTML = `
+                    <div class="product-item">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">${product.name}</div>
+                            <div>Size: ${product.size || 'One Size'}</div>
+                            <div class="product-price">₹${product.price.toLocaleString()}</div>
+                        </div>
+                    </div>
+                `;
+                orderedItemsContainer.innerHTML = itemHTML;
+            } else {
+                // For cart items (you would need to store cart items in localStorage)
+                orderedItemsContainer.innerHTML = `
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/80" alt="Product" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">Premium Luxury Watch</div>
+                            <div>Size: One Size</div>
+                            <div class="product-price">₹${(total + discount - 69).toLocaleString()}</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Clear cart after order is placed
+            localStorage.removeItem('cartCount');
+            localStorage.removeItem('orderTotal');
+            localStorage.removeItem('buynowProduct');
+        });
+    </script>
+</body>
+</html>

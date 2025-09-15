@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary - Timeluxe</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+               *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #efefef, #4ca1af;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #efefef, #4ca1af);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(36, 36, 36, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+.fas-fa-user-fa-2x{
+    background:white ;
+}
+
+.gender-dropdown {
+  position: relative;
+}
+
+.gender-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(135deg, #efefef, #4ca1af);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 150px;
+  z-index: 100;
+}
+
+.gender-menu a {
+  color: #2c3e50;
+  padding: 8px 20px;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gender-menu a:hover {
+  background-color: #f0f0f0;
+  padding-left: 25px;
+}
+
+.gender-dropdown:hover .gender-menu {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.search-container {
+  position: relative;
+  width: 250px;
+}
+
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.icon {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.icon-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+ /* Icons */
+ .nav-icons .icon {
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  margin-left: 20px;
+  transition: transform 0.2s ease, color 0.3s;
+}
+
+.nav-icons .icon:hover {
+  transform: scale(1.2);
+  color: #f9c745;
+}
+ /* Responsive Coming Soon */
+ @media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+a{
+            color: #ffffff;
+            text-decoration: none;
+        }
+        body { background: #f5f5f5; }
+        .order-container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 30px; }
+        .stepper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .step { flex: 1; text-align: center; position: relative; }
+        .step .circle { width: 32px; height: 32px; border-radius: 50%; background: #2d8f5a; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 5px; }
+        .step.active .circle { background: #f9c745; color: #222; }
+        .step:not(:last-child)::after { content: ''; position: absolute; top: 16px; right: -50%; width: 100%; height: 4px; background: #e0e0e0; z-index: 0; }
+        .step.active:not(:last-child)::after { background: #2d8f5a; }
+        .step-label { font-size: 0.95rem; color: #555; }
+        .address-section, .product-section, .price-section, .donate-section, .secure-section { margin-bottom: 24px; }
+        .address-title { font-weight: 600; margin-bottom: 6px; }
+        .address-details { font-size: 1rem; color: #222; margin-bottom: 2px; }
+        .change-btn { background:( #f9c745); color: #222; border: none; border-radius: 4px; padding: 4px 12px; font-size: 0.95rem; cursor: pointer; float: right; }
+        .product-summary { display: flex; align-items: center; gap: 18px; margin-bottom: 10px; }
+        .product-summary img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+        .multi-item-container { max-height: 300px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; padding: 10px; margin-bottom: 15px; }
+        .multi-item-summary { font-weight: bold; color: #4ca1af; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 10px; }
+        .product-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+        .product-price { color: #4ca1af; font-weight: 700; font-size: 1rem; }
+        .product-qty { font-size: 0.95rem; color: #555; }
+        .delivery-info { font-size: 0.98rem; color: #2d8f5a; margin-bottom: 8px; }
+        .open-box { background: #f7f7e6; border-left: 4px solid #f9c745; padding: 10px 14px; border-radius: 6px; font-size: 0.98rem; margin-bottom: 10px; }
+        .price-table { width: 100%; font-size: 1rem; margin-bottom: 8px; }
+        .price-table td { padding: 4px 0; }
+        .price-table .label { color: #555; }
+        .price-table .value { text-align: right; }
+        .total-row { font-weight: 700; border-top: 1px solid #eee; }
+        .save-msg { color: #4ca1af; font-weight: 600; margin-top: 6px; }
+        .donate-section { background: #f9f9f9; border-radius: 8px; padding: 12px 16px; }
+        .donate-title { font-weight: 600; margin-bottom: 6px; }
+        .donate-btns { display: flex; gap: 10px; margin-top: 8px; }
+        .donate-btn { background: #e0e0e0; border: none; border-radius: 16px; padding: 6px 18px; font-size: 1rem; cursor: pointer; }
+        .donate-btn.selected, .donate-btn:hover { background: #4ca1af; color: #fff; }
+        .secure-section { background: #f7f7f7; border-radius: 8px; padding: 10px 14px; font-size: 0.98rem; display: flex; align-items: center; gap: 10px; }
+        .secure-section i { color: #2d8f5a; font-size: 1.2rem; }
+        .stepper-simple {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 18px;
+          margin-bottom: 30px;
+          margin-top: 10px;
+          font-family: inherit;
+        }
+        .step-item {
+          padding: 6px 18px;
+          border-radius: 20px;
+          background: #e0e0e0;
+          color: #888;
+          font-weight: 500;
+          font-size: 1rem;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+          box-shadow: 0 2px 8px rgba(74, 193, 175, 0.08);
+          position: relative;
+        }
+        .active-step {
+          background: #fff;
+          color: #4ac1af;
+          font-weight: bold;
+          border: 2px solid #4ac1af;
+        }
+        .completed-step {
+          background: #4ac1af;
+          color: #fff;
+          font-weight: bold;
+        }
+        .step-item:hover {
+          box-shadow: 0 0 12px 2px #b2f1e5, 0 2px 8px rgba(74, 193, 175, 0.18);
+          background: #e3f9f6;
+          color: #4ac1af;
+          cursor: pointer;
+        }
+        .step-arrow {
+          font-size: 1.3rem;
+          color: #4ac1af;
+          font-weight: bold;
+        }
+        .step-indicator {
+          text-align: left;
+          color: #888;
+          font-size: 2.1rem;
+          margin: 0 0 25px 0;
+          font-family: inherit;
+          font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">
+        <img src="logo.png" alt="">
+    </a>
+    <ul class="nav-links">
+        <li><a href="website1.html">HOME</a></li>   
+        <li><a href="mens1.html">MEN</a></li>
+        <li><a href="women.html">WOMEN</a></li>
+        <li><a href="kids.html">KIDS</a></li>
+        <li><a href="aboutus.html">ABOUT US</a></li>
+        <li><a href="LOGIN.HTML">PROFILE</a></li>
+        <li><a href="cart.html">
+          <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+      </a></li>
+    </ul>
+  </nav>
+    <div class="order-container">
+        <div class="address-section">
+            <div class="address-title">Deliver to:</div>
+            <div id="addressDisplay">
+                <div class="address-details" id="addressName"></div>
+                <div class="address-details" id="addressPhone"></div>
+                <div class="address-details" id="addressPin"></div>
+                <div class="address-details" id="addressFull"></div>
+                <div class="address-details" id="addressEmail"></div>
+                <button class="change-btn" id="changeAddressBtn">Change</button>
+            </div>
+            <form id="addressForm" style="display:none; margin-top:10px;">
+                <input type="text" id="inputName" placeholder="Name" style="margin-bottom:6px;width:100%;padding:6px;" required>
+                <input type="text" id="inputPhone" placeholder="Phone" style="margin-bottom:6px;width:100%;padding:6px;" required>
+                <input type="text" id="inputPin" placeholder="Pin Code" style="margin-bottom:6px;width:100%;padding:6px;" required>
+                <input type="text" id="inputFull" placeholder="Full Address" style="margin-bottom:6px;width:100%;padding:6px;" required>
+                <input type="text" id="inputEmail" placeholder="Email" style="margin-bottom:6px;width:100%;padding:6px;" required>
+                <button type="submit" class="change-btn" style="float:none;">Save</button>
+                <button type="button" class="change-btn" id="cancelAddressBtn" style="background:#eee;color:#222;float:none;">Cancel</button>
+            </form>
+        </div>
+        <div class="product-section">
+            <div class="product-summary" id="productSummary"></div>
+            <div class="delivery-info">Express Delivery in 2 days, <span style="color:#222;">FREE</span></div>
+            <div class="open-box"><b>Rest assured with Open Box Delivery</b><br>Delivery agent will open the package so you can check for correct product, damage or missing items. Share OTP to accept the delivery.</div>
+        </div>
+        <div class="price-section">
+            <table class="price-table">
+                <tr><td class="label">Price</td><td class="value" id="itemPrice">₹0</td></tr>
+                <tr><td class="label">Discount</td><td class="value" id="itemDiscount">- ₹0</td></tr>
+                <tr><td class="label">Delivery Charges</td><td class="value">FREE Delivery</td></tr>
+                <tr><td class="label">Protect Promise Fee</td><td class="value">₹69</td></tr>
+                <tr id="donationRow" style="display:none;">
+                    <td class="label">Donation</td>
+                    <td class="value" id="donationAmount">₹0</td>
+                </tr>
+                <tr class="total-row"><td class="label">Total Amount</td><td class="value" id="totalAmount">₹0</td></tr>
+            </table>
+            <div class="save-msg" id="saveMsg"></div>
+        </div>
+        <div class="donate-section">
+            <div class="donate-title">Donate to Timeluxe Foundation</div>
+            <div>Support transformative social work in India</div>
+            <div class="donate-btns">
+                <button class="donate-btn" data-amt="10">₹10</button>
+                <button class="donate-btn" data-amt="20">₹20</button>
+                <button class="donate-btn" data-amt="50">₹50</button>
+                <button class="donate-btn" data-amt="100">₹100</button>
+            </div>
+        </div>
+        <div class="secure-section">
+            <i class="fas fa-shield-alt"></i> Safe and secure payments. Easy returns. 100% Authentic products.
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top:24px;">
+            <button id="backToCartBtn" style="
+                background: #e0e0e0;
+                color: #222;
+                border: none;
+                border-radius: 6px;
+                padding: 10px 24px;
+                font-size: 1rem;
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                transition: background 0.2s;
+            ">Back to Cart</button>
+            
+            <button id="continueBtn" style="
+                background:( #4ca1af);
+                color: #222;
+                border: none;
+                border-radius: 6px;
+                padding: 14px 48px;
+                font-size: 1.15rem;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                transition: background 0.2s;
+            ">Continue to Payment</button>
+        </div>
+    </div>
+    <script>
+        // Get product info from localStorage
+        const product = JSON.parse(localStorage.getItem('buynowProduct'));
+        const productSummary = document.getElementById('productSummary');
+        let price = 0, discount = 0, total = 0;
+        let selectedTip = 0;
+
+        if (product) {
+            price = product.price;
+            discount = Math.floor(price * 0.11); // 11% discount
+            total = price - discount + 69; // +69 for Protect Promise Fee
+            
+            if (product.isMultipleItems && product.items) {
+                // Create a multiple item display
+                let productHTML = '';
+                
+                // Show up to 3 items from cart with a count indicator if more
+                const displayItems = product.items.slice(0, 3);
+                const remainingItems = Math.max(0, product.items.length - 3);
+                
+                displayItems.forEach(item => {
+                    productHTML += `
+                        <div class="product-summary" style="margin-bottom: 15px;">
+                            <img src="${item.image}" alt="${item.name}" style="width: 70px; height: 70px;">
+                            <div>
+                                <div class="product-title">${item.name}</div>
+                                <div class="product-price">₹${item.price.toLocaleString()}</div>
+                                <div class="product-qty">Qty: ${item.quantity}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                if (remainingItems > 0) {
+                    productHTML += `<div style="margin-top: 10px; color: #555; font-style: italic;">+ ${remainingItems} more item(s)</div>`;
+                }
+                
+                productSummary.innerHTML = productHTML;
+            } else {
+                // Single item display
+                const quantity = product.quantity || 1;
+                productSummary.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
+                    <div>
+                        <div class="product-title">${product.title}</div>
+                        <div class="product-price">₹${product.price.toLocaleString()}</div>
+                        <div class="product-qty">Qty: ${quantity}</div>
+                    </div>
+                `;
+            }
+        }
+        document.getElementById('itemPrice').innerText = `₹${price.toLocaleString()}`;
+        document.getElementById('itemDiscount').innerText = `- ₹${discount.toLocaleString()}`;
+        updateTotalDisplay();
+        document.getElementById('saveMsg').innerText = `You will save ₹${discount.toLocaleString()} on this order`;
+
+        // Load shipping info from localStorage
+        const shipping = JSON.parse(localStorage.getItem('orderShipping'));
+        if (shipping) {
+            document.getElementById('addressName').innerText = shipping.name;
+            document.getElementById('addressPhone').innerText = shipping.phone ? shipping.phone : '';
+            document.getElementById('addressPin').innerText = shipping.pin ? 'Pin: ' + shipping.pin : '';
+            document.getElementById('addressFull').innerText = shipping.address;
+            document.getElementById('addressEmail').innerText = shipping.email;
+        } else {
+            // Default values for first-time users
+            document.getElementById('addressName').innerText = 'Enter your shipping information';
+            document.getElementById('addressPhone').innerText = '';
+            document.getElementById('addressPin').innerText = '';
+            document.getElementById('addressFull').innerText = '';
+            document.getElementById('addressEmail').innerText = '';
+            
+            // Show the form immediately for first-time users
+            setTimeout(() => {
+                document.getElementById('changeAddressBtn').click();
+            }, 500);
+        }
+
+        // Donate buttons
+        document.querySelectorAll('.donate-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.donate-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTip = parseInt(this.getAttribute('data-amt'));
+                updateTotalDisplay();
+            });
+        });
+
+        document.getElementById('continueBtn').onclick = function() {
+            // Redirect to payment or next step
+            window.location.href = 'payment.html'; // Change to your payment page
+        };
+
+        document.getElementById('backToCartBtn').onclick = function() {
+            // Return to cart page
+            window.location.href = 'cart.html';
+        };
+
+        // Address Change Functionality
+        const addressDisplay = document.getElementById('addressDisplay');
+        const addressForm = document.getElementById('addressForm');
+        const changeAddressBtn = document.getElementById('changeAddressBtn');
+        const cancelAddressBtn = document.getElementById('cancelAddressBtn');
+        const inputName = document.getElementById('inputName');
+        const inputPhone = document.getElementById('inputPhone');
+        const inputPin = document.getElementById('inputPin');
+        const inputFull = document.getElementById('inputFull');
+        const inputEmail = document.getElementById('inputEmail');
+
+        // Pre-fill form with current values
+        changeAddressBtn.onclick = function() {
+            inputName.value = document.getElementById('addressName').innerText;
+            inputPhone.value = document.getElementById('addressPhone').innerText;
+            inputPin.value = document.getElementById('addressPin').innerText.replace('Pin: ', '');
+            inputFull.value = document.getElementById('addressFull').innerText;
+            inputEmail.value = document.getElementById('addressEmail').innerText;
+            addressDisplay.style.display = 'none';
+            addressForm.style.display = 'block';
+        };
+
+        cancelAddressBtn.onclick = function() {
+            addressForm.style.display = 'none';
+            addressDisplay.style.display = 'block';
+        };
+
+        addressForm.onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('addressName').innerText = inputName.value;
+            document.getElementById('addressPhone').innerText = inputPhone.value;
+            document.getElementById('addressPin').innerText = 'Pin: ' + inputPin.value;
+            document.getElementById('addressFull').innerText = inputFull.value;
+            document.getElementById('addressEmail').innerText = inputEmail.value;
+            addressForm.style.display = 'none';
+            addressDisplay.style.display = 'block';
+            // Save updated shipping info
+            localStorage.setItem('orderShipping', JSON.stringify({
+                name: inputName.value,
+                phone: inputPhone.value,
+                pin: inputPin.value,
+                address: inputFull.value,
+                email: inputEmail.value
+            }));
+        };
+
+        function updateTotalDisplay() {
+            document.getElementById('totalAmount').innerText = `₹${(total + selectedTip).toLocaleString()}`;
+            const donationRow = document.getElementById('donationRow');
+            const donationAmount = document.getElementById('donationAmount');
+            if (selectedTip > 0) {
+                donationRow.style.display = '';
+                donationAmount.innerText = `₹${selectedTip.toLocaleString()}`;
+            } else {
+                donationRow.style.display = 'none';
+                donationAmount.innerText = '₹0';
+            }
+        }
+    </script>
+</body>
+</html>

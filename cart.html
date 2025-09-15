@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - The Style Seed</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .cart-container {
+                max-width: 800px;
+                margin: 0 auto;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            }
+            .cart-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #ddd;
+                padding: 15px 0;
+            }
+            .cart-item img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+            .cart-item-details {
+                flex: 1;
+                margin-left: 20px;
+            }
+            .cart-item-details h3 {
+                margin: 0;
+                font-size: 18px;
+            }
+            .cart-item-details p {
+                margin: 5px 0;
+                color: #555;
+            }
+            .cart-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-left: 20px;
+            }
+            .total {
+                text-align: right;
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .empty-cart {
+                text-align: center;
+                color: #888;
+                font-size: 20px;
+                margin-top: 50px;
+            }
+            .buy-now-button, .remove-button, .buy-all-button {
+                background-color: black;
+                border: none;
+                padding: 10px 18px;
+                color: white;
+                font-weight: bold;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 140px;
+                transition: background-color 0.3s ease;
+            }
+            .buy-now-button:hover, .buy-all-button:hover {
+                background-color: #28a745; /* green on hover */
+            }
+            .buy-all-button {
+                width: 200px;
+                margin: 20px auto;
+                display: block;
+                font-size: 18px;
+                padding: 12px 24px;
+            }
+            .remove-button {
+                background-color: black;
+            }
+            .remove-button:hover {
+                background-color: rgb(165, 21, 21);
+            }
+            .quantity-button {
+                background-color: rgb(202, 217, 225);
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                margin: 5px 2px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .quantity-button:hover {
+                background-color: #aaa;
+            }
+            .checkout-section {
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="">
+        </a>
+        <ul class="nav-links">
+            <li><a href="website1.html">HOME</a></li>   
+            <li><a href="mens1.html">MEN</a></li>
+            <li><a href="women.html">WOMEN</a></li>
+            <li><a href="kids.html">KIDS</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="LOGIN.HTML">PROFILE</a></li>
+            <li><a href="cart.html">
+              <img src="  C:\Users\LOQ\OneDrive\Desktop\cc.png" alt="cart">
+          </a></li>
+        </ul>
+      </nav>
+    <br>
+    <div class="abc">YOUR SHOPPING CART</div>
+    <br>
+
+    <div class="cart-container" id="cart-container">
+        <!-- Cart items will be loaded here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const cartButtons = document.querySelectorAll('.cart-btn');
+      
+          cartButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+              const productCard = button.closest('.product-card');
+              const name = productCard.querySelector('.hover-panel').innerText.trim();
+              const priceText = productCard.querySelector('.price').innerText.replace('Rs.', '').trim();
+              const image = productCard.querySelector('img').getAttribute('src');
+      
+              const product = {
+                name: name,
+                price: parseFloat(priceText),
+                image: image,
+                quantity: 1
+              };
+      
+              let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+              const existingProductIndex = cart.findIndex(item => item.name === product.name);
+      
+              if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity += 1;
+                alert('Increased quantity in cart!');
+              } else {
+                cart.push(product);
+                alert('Added to cart successfully!');
+              }
+      
+              localStorage.setItem('cart', JSON.stringify(cart));
+      
+              const cartCount = document.getElementById('cart-count');
+              if (cartCount) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.innerText = totalItems;
+              }
+            });
+          });
+      
+          updateCart();
+        });
+      
+        function updateCart() {
+          const container = document.getElementById('cart-container');
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+          if (!container) return; // Skip if not on cart page
+          container.innerHTML = '';
+      
+          if (cart.length === 0) {
+            container.innerHTML = '<div class="empty-cart">Your cart is empty!</div>';
+          } else {
+            let totalPrice = 0;
+            cart.forEach((cartItem, index) => {
+              const item = document.createElement('div');
+              item.classList.add('cart-item');
+              const itemPrice = cartItem.price * cartItem.quantity;
+              
+              item.innerHTML = `
+                <img src="${cartItem.image}" alt="${cartItem.name}">
+                <div class="cart-item-details">
+                    <h3>${cartItem.name}</h3>
+                    <p>Price: Rs. ${cartItem.price}</p>
+                    <p>Quantity: ${cartItem.quantity}</p>
+                    <button class="quantity-button" onclick="increaseQuantity(${index})">➕</button>
+                    <button class="quantity-button" onclick="decreaseQuantity(${index})">➖</button>
+                </div>
+                <div class="cart-buttons">
+                    <button class="remove-button" onclick="removeProduct(${index})">🗑️ Remove</button>
+                </div>
+              `;
+              container.appendChild(item);
+              totalPrice += itemPrice;
+            });
+      
+            const total = document.createElement('div');
+            total.classList.add('total');
+            total.innerHTML = `Total Price: Rs. ${totalPrice.toFixed(2)}`;
+            container.appendChild(total);
+            
+            // Add the Buy All button
+            const checkoutSection = document.createElement('div');
+            checkoutSection.classList.add('checkout-section');
+            checkoutSection.innerHTML = `
+              <button class="buy-all-button" onclick="buyAllItems()">🛒 Buy All Items</button>
+            `;
+            container.appendChild(checkoutSection);
+          }
+        }
+      
+        function removeProduct(index) {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCart();
+          updateCartCount();
+        }
+      
+        function increaseQuantity(index) {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart[index].quantity += 1;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCart();
+          updateCartCount();
+        }
+      
+        function decreaseQuantity(index) {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+          } else {
+            cart.splice(index, 1);
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCart();
+          updateCartCount();
+        }
+      
+        function updateCartCount() {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const cartCount = document.getElementById('cart-count');
+          if (cartCount) {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.innerText = totalItems;
+          }
+        }
+      
+        // Replace the buyAllItems() function with this updated version
+function buyAllItems() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart.length === 0) return;
+  
+  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  // Prepare cart data for summary page
+  // If there are multiple items, we'll combine them for the order summary
+  if (cart.length === 1) {
+    // For single item, use the same format as the buynowProduct
+    localStorage.setItem('buynowProduct', JSON.stringify({
+      title: cart[0].name,
+      price: cart[0].price * cart[0].quantity,
+      image: cart[0].image,
+      quantity: cart[0].quantity
+    }));
+  } else {
+    // For multiple items, create a combined product
+    const combinedProduct = {
+      title: `${cart.length} items from cart`,
+      price: totalPrice,
+      image: cart[0].image, // Use first item's image as thumbnail
+      quantity: cart.reduce((sum, item) => sum + item.quantity, 0),
+      isMultipleItems: true,
+      items: cart // Keep the original cart items for detailed display
+    };
+    localStorage.setItem('buynowProduct', JSON.stringify(combinedProduct));
+  }
+  
+  // Redirect to order summary page
+  window.location.href = 'ordersummary.html';
+}
+      </script>
+</body>
+</html>

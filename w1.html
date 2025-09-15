@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Details - The Style Seed</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    /* --- Styling --- */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .product-image, .product-details {
+      flex: 1;
+      padding: 20px;
+    }
+    .product-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .product-details h1 { margin-top: 0; }
+    .product-details .price {
+      font-size: 1.5em;
+      color: #e44d26;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .product-description {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .size-options {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .size-box {
+      width: 40px;
+      height: 40px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .size-box.selected {
+      background-color: #007bff;
+      color: white;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .buy-now { background: #007bff; color: white; }
+    .add-to-cart { background: #28a745; color: white; }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .popup-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .popup-product-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .popup-product-info img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .popup-product-details {
+      flex: 1;
+    }
+    .popup-buttons {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .popup-buttons button {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .proceed-btn { background: #007bff; color: white; margin-right: 10px; }
+    .cancel-btn { background: #ccc; }
+    .order-summary p {
+      margin: 5px 0;
+    }
+    .highlight { font-weight: bold; }
+  </style>
+</head>
+
+<body>
+
+<!-- Main Product -->
+<div class="container">
+  <div class="product-image">
+    <img src="w1.png" alt="Women's Classic Co-Ord Set" id="main-product-image">
+  </div>
+  <div class="product-details">
+    <h1 id="main-product-name">Women's Classic Co-Ord Set</h1>
+    <p class="price" id="main-product-price">Rs. 1999</p>
+    <p class="product-description">
+      Elevate your wardrobe with this elegant co-ord set crafted from premium 100% cotton. 
+      Perfect for casual outings or semi-formal occasions, offering both comfort and style!
+    </p>
+    <div>
+      <label><strong>Select Size:</strong></label>
+      <div class="size-options">
+        <div class="size-box" data-size="XS">XS</div>
+        <div class="size-box" data-size="S">S</div>
+        <div class="size-box" data-size="M">M</div>
+        <div class="size-box" data-size="L">L</div>
+        <div class="size-box" data-size="XL">XL</div>
+      </div>
+      <p id="size-error" style="color:red; display:none;">Please select a size!</p>
+    </div>
+    <div class="buttons">
+      <button class="buy-now">Buy Now</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup 1: Confirm Details -->
+<div class="popup" id="size-popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h2>Confirm Product</h2>
+    </div>
+    <div class="popup-product-info">
+      <img src="w1.png" alt="Product" id="popup-product-image">
+      <div class="popup-product-details">
+        <p><strong>Name:</strong> <span id="popup-product-name"></span></p>
+        <p><strong>Size:</strong> <span id="popup-selected-size"></span></p>
+        <p><strong>Price:</strong> <span id="popup-price"></span></p>
+      </div>
+    </div>
+    <div class="popup-buttons">
+      <button class="proceed-btn" id="proceed-payment">Proceed</button>
+      <button class="cancel-btn" id="cancel-payment">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup 2: Final Order -->
+<div class="popup" id="order-popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h2>Order Summary</h2>
+    </div>
+    <div class="popup-product-info">
+      <img src="w1.png" alt="Product" id="order-product-image">
+      <div class="popup-product-details">
+        <p><strong>Name:</strong> <span id="order-product-name"></span></p>
+        <p><strong>Size:</strong> <span id="order-selected-size"></span></p>
+      </div>
+    </div>
+    <div class="order-summary">
+      <p>Product Price: <span id="order-price"></span></p>
+      <p>Shipping Charges: Rs. <span id="shipping-charge">50</span></p>
+      <p>Tax (5%): Rs. <span id="tax-amount"></span></p>
+      <p class="highlight">Total Amount: Rs. <span id="final-amount"></span></p>
+    </div>
+    <div class="popup-buttons">
+      <button class="proceed-btn" onclick="placeOrder()">Place Order</button>
+      <button class="cancel-btn" onclick="closeOrderPopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  let selectedSize = null;
+  let productPrice = 1999;
+
+  document.querySelectorAll('.size-box').forEach(box => {
+    box.addEventListener('click', function() {
+      document.querySelectorAll('.size-box').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedSize = this.getAttribute('data-size');
+      document.getElementById('size-error').style.display = 'none';
+    });
+  });
+
+  document.querySelector('.buy-now').addEventListener('click', () => {
+    if (!selectedSize) {
+      document.getElementById('size-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('popup-product-name').innerText = "Women's Classic Co-Ord Set";
+    document.getElementById('popup-selected-size').innerText = selectedSize;
+    document.getElementById('popup-price').innerText = "Rs. 1999";
+    document.getElementById('size-popup').style.display = 'flex';
+  });
+
+  document.getElementById('cancel-payment').addEventListener('click', () => {
+    document.getElementById('size-popup').style.display = 'none';
+  });
+
+  document.getElementById('proceed-payment').addEventListener('click', () => {
+    document.getElementById('size-popup').style.display = 'none';
+
+    // Fill Order Popup
+    document.getElementById('order-product-name').innerText = "Women's Classic Co-Ord Set";
+    document.getElementById('order-selected-size').innerText = selectedSize;
+    document.getElementById('order-price').innerText = "Rs. 1999";
+
+    let shipping = 50;
+    let tax = Math.round(productPrice * 0.05);
+    let finalAmount = productPrice + shipping + tax;
+
+    document.getElementById('tax-amount').innerText = tax;
+    document.getElementById('final-amount').innerText = finalAmount;
+
+    document.getElementById('order-popup').style.display = 'flex';
+  });
+
+  function closeOrderPopup() {
+    document.getElementById('order-popup').style.display = 'none';
+  }
+
+  function placeOrder() {
+    alert('🎉 Order Placed Successfully! Thank you for shopping.');
+    document.getElementById('order-popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
